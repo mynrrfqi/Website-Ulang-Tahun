@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun, Citra! 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- AUDIO GLOBAL — tidak auto-play -->
+  <audio id="bgMusic" src="audio/musik.mp3" loop preload="auto"></audio>
+
+  <!-- LATAR ANIMASI PARTIKEL -->
+  <canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- CANVAS KONFETI -->
+  <canvas id="konfettiCanvas" class="konfetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- TOMBOL TOGGLE MODE GELAP/TERANG -->
+  <button id="toggleMode" class="toggle-mode" title="Toggle Mode Gelap/Terang" aria-label="Toggle mode gelap dan terang">
+    <span id="iconToggle">🌙</span>
+  </button>
+
+  <!-- KONTROL MUSIK (muncul setelah musik dimulai) -->
+  <div id="musikKontrol" class="musik-kontrol tersembunyi" role="region" aria-label="Kontrol musik">
+    <button id="tombolMusik" class="mk-btn" title="Putar / Jeda" aria-label="Putar atau jeda musik">
+      <span id="ikonMusik">⏸</span>
+    </button>
+    <input id="pengaturVolume" type="range" min="0" max="1" step="0.05" value="0.7"
+           class="vol-slider" title="Atur volume" aria-label="Atur volume musik" />
+    <button id="tombolSenyap" class="mk-btn" title="Senyap" aria-label="Nyalakan atau matikan suara">
+      <span id="ikonSenyap">🔊</span>
+    </button>
+  </div>
+
+  <!-- INDIKATOR HALAMAN -->
+  <div id="indikatorHalaman" class="indikator-halaman tersembunyi" aria-label="Posisi halaman">
+    <span id="nomorHalaman">01</span>
+    <span class="ih-sep">/</span>
+    <span id="totalHalaman">07</span>
+  </div>
+
+  <!-- NAVIGASI BAWAH -->
+  <nav id="navBar" class="nav-bar tersembunyi" aria-label="Navigasi halaman">
+    <button id="tombolSebelumnya" class="nav-btn nav-btn--prev" aria-label="Halaman sebelumnya" disabled>
+      <span class="nav-ikon" aria-hidden="true">←</span>
+      <span class="nav-teks">Sebelumnya</span>
+    </button>
+    <div id="titikNav" class="titik-nav" aria-hidden="true"></div>
+    <button id="tombolLanjut" class="nav-btn nav-btn--next" aria-label="Halaman berikutnya">
+      <span class="nav-teks">Lanjut</span>
+      <span class="nav-ikon" aria-hidden="true">→</span>
+    </button>
+  </nav>
+
+  <!-- PESAN ERROR MUSIK -->
+  <div id="pesanErrorMusik" class="pesan-error tersembunyi" role="alert">
+    <p>😔 Musiknya belum bisa diputar.</p>
+    <button id="tombolCobaLagi" class="btn-kecil">Coba Lagi ▶</button>
+  </div>
+
+  <!-- ============================================================
+       HALAMAN 1 — BUKA SURAT
+       ============================================================ -->
+  <section id="halaman1" class="halaman halaman--aktif" data-nomor="1" aria-label="Buka surat">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--1"></div>
+      <div class="cl cl--2"></div>
+      <div class="cl cl--3"></div>
+    </div>
+
+    <div class="konten-halaman">
+      <button class="pembuka-surat animasi-masuk" id="tombolBukaKejutan" aria-label="Buka surat">
+        <div class="surat-pembuka" id="suratPembuka">
+          <div class="kertas-keluar" aria-hidden="true">
+            <span>✦ Untuk Citra ✦</span>
+          </div>
+          <div class="amplop-buka">
+            <div class="tutup-buka" id="tutupPembuka"></div>
+            <div class="badan-buka">
+              <span class="segel-surat" aria-hidden="true">💜</span>
+            </div>
+          </div>
+        </div>
+        <span class="teks-buka-surat">Buka Kejutan Kecil</span>
+        <span class="petunjuk-buka">ketuk suratnya</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HALAMAN 2 — UCAPAN ULANG TAHUN
+       ============================================================ -->
+  <section id="halaman2" class="halaman" data-nomor="2" aria-label="Ucapan ulang tahun">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--2"></div>
+      <div class="cl cl--3" style="animation-delay:-6s"></div>
+    </div>
+
+    <div class="konten-halaman">
+      <div class="kartu-kaca">
+
+        <p class="kata-lucu">Cihuuhuuyyy ada yang Ultah nihhh 😆😻</p>
+
+        <!-- Angka 23 besar -->
+        <div class="angka-raksasa-wrap" aria-hidden="true">
+          <span class="angka-raksasa" id="angka23">23</span>
+          <div class="cahaya-angka"></div>
+        </div>
+
+        <div class="kilauan-baris" aria-hidden="true">✦ ✧ ✦ ✧ ✦</div>
+
+        <h2 class="judul-halaman2">SELAMAT ULANG TAHUN YAA!</h2>
+        <p class="nama-lengkap">Citra Emalia Putri Syafida Ramadhani</p>
+        <p class="teks-tanggal-lahir">9 November 2003 - 9 November 2026</p>
+
+        <div class="kotak-pesan">
+          <p>🎉 🎂 🎈 🎊 🎀 ✨ 🎁 💜 🎉</p>
+          <p>Mari rayakan momen spesial inii!</p>
+          <p>🎊 🌟 🎈 🎉 🎂 💫 🎀 🎁 ✨</p>
+        </div>
+
+        <button class="btn-utama btn-berkilau" id="tombolLanjutKe3" aria-label="Lanjut ke kejutan">
+          LANJUT KE KEJUTAN 🎁
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HALAMAN 3 — KUE ULANG TAHUN
+       ============================================================ -->
+  <section id="halaman3" class="halaman" data-nomor="3" aria-label="Kue ulang tahun">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--1" style="animation-delay:-4s"></div>
+      <div class="cl cl--3"></div>
+    </div>
+
+    <div class="konten-halaman">
+      <div class="kartu-kaca kartu-kaca--lebar">
+
+        <h2 class="judul-halaman">Yuuk. Buat Harapan dan Tiup Lilin duluu! 🎂</h2>
+
+        <!-- Kue -->
+        <div class="panggung-kue" aria-label="Kue ulang tahun">
+          <div class="kue" id="kue">
+
+            <!-- Lilin angka 23 -->
+            <div class="baris-lilin">
+              <div class="lilin lilin--ungu" id="lilin1">
+                <div class="nyala" id="nyala1"><div class="nyala-dalam"></div></div>
+                <div class="tubuh-lilin"><span class="angka-lilin">2</span></div>
+              </div>
+              <div class="lilin lilin--pink" id="lilin2">
+                <div class="nyala" id="nyala2"><div class="nyala-dalam"></div></div>
+                <div class="tubuh-lilin"><span class="angka-lilin">3</span></div>
+              </div>
+            </div>
+
+            <!-- Tingkat atas -->
+            <div class="tingkat tingkat--atas">
+              <div class="krim-atas"></div>
+              <div class="isi-tingkat">🍓 🍒 🍓</div>
+            </div>
+
+            <!-- Tingkat tengah -->
+            <div class="tingkat tingkat--tengah">
+              <div class="isi-tingkat">💎 ✦ 💜 ✦ 💎</div>
+            </div>
+
+            <!-- Tingkat bawah -->
+            <div class="tingkat tingkat--bawah">
+              <div class="isi-tingkat">✦ 🌙 ✦ ⭐ ✦ 🌙 ✦</div>
+            </div>
+
+            <!-- Piring -->
+            <div class="piring-kue"></div>
+
+          </div><!-- /kue -->
+          <!-- Cahaya kue -->
+          <div class="cahaya-kue" aria-hidden="true"></div>
+        </div><!-- /panggung-kue -->
+
+        <p class="teks-kue-sub">Jangan lupa buat harapan dulu.</p>
+        <p class="teks-kue-note"></p>
+
+        <!-- Langkah 1 -->
+        <div id="langkahKue1" class="aksi-kue">
+          <button class="btn-utama" id="tombolBuatHarapan">BUAT HARAPAN ✨</button>
+        </div>
+
+        <!-- Langkah 2 -->
+        <div id="langkahKue2" class="aksi-kue tersembunyi">
+          <div class="kotak-pesan kotak-pesan--kecil">
+            <p>✨ Semoga harapannya satu per satu bisa tercapai.</p>
+          </div>
+          <button class="btn-utama" id="tombolTiupLilin">TIUP LILIN 🕯️</button>
+        </div>
+
+        <!-- Langkah 3 -->
+        <div id="langkahKue3" class="aksi-kue tersembunyi">
+          <div class="kotak-pesan kotak-pesan--rayakan">
+            <p>YEAY! SELAMAT BERTAMBAH UMUR, CITRA! 🎉</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HALAMAN 4 — NOSTALGIA
+       ============================================================ -->
+  <section id="halaman4" class="halaman" data-nomor="4" aria-label="Nostalgia">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--2" style="animation-delay:-8s"></div>
+      <div class="cl cl--1" style="animation-delay:-2s"></div>
+    </div>
+    <div class="dekorasi-bintang" aria-hidden="true">
+      <span>⭐</span><span>🌙</span><span>✦</span><span>⭐</span><span>💫</span>
+    </div>
+
+    <div class="konten-halaman">
+      <div class="kartu-kaca kartu-kaca--lebar">
+        <h2 class="judul-halaman">EH, UDAH LAMAA YA KITA NGGAK KOMUNIKASI 😆😭</h2>
+        <div class="area-mengetik" id="areaNostalgia" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HALAMAN 5 — HUMOR
+       ============================================================ -->
+  <section id="halaman5" class="halaman" data-nomor="5" aria-label="Humor ulang tahun">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--3" style="animation-delay:-5s"></div>
+      <div class="cl cl--2" style="animation-delay:-11s"></div>
+    </div>
+
+    <div class="konten-halaman">
+      <div class="kartu-kaca kartu-kaca--lebar">
+        <h2 class="judul-halaman">23 TAHUN? SERIUS NIH, CITRA? 😭</h2>
+        <div class="daftar-humor" id="daftarHumor"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HALAMAN 6 — SURAT
+       ============================================================ -->
+  <section id="halaman6" class="halaman" data-nomor="6" aria-label="Surat ulang tahun">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--1" style="animation-delay:-7s"></div>
+      <div class="cl cl--3" style="animation-delay:-13s"></div>
+    </div>
+    <div class="hati-melayang" aria-hidden="true">
+      <span>💜</span><span>✦</span><span>💜</span><span>✦</span>
+    </div>
+
+    <div class="konten-halaman">
+      <div class="kartu-kaca kartu-kaca--lebar">
+
+        <!-- Tampilan amplop -->
+        <div id="tampilanAmplop" class="tampilan-amplop">
+          <h3 style="font-size: 1rem; color: var(--ungu-terang); margin-bottom: 0.5rem; animation: naik .8s ease .1s both;">Buka Suratmu 💌</h3>
+          <div class="amplop" id="amplop">
+            <div class="tutup-amplop" id="tutupAmplop"></div>
+            <div class="badan-amplop">
+              <span class="teks-amplop">Untuk Citra ✦</span>
+            </div>
+          </div>
+          <button class="btn-utama btn-berkilau" id="tombolBukaSurat">BUKA SURAT 💌</button>
+        </div>
+
+        <!-- Surat -->
+        <div id="tampilanSurat" class="tampilan-surat tersembunyi">
+          <div class="kertas-surat" id="kertasSurat">
+            <div class="kepala-surat">💜 ✦ 💜 ✦ 💜</div>
+            <div class="isi-surat" id="isiSurat" aria-live="polite"></div>
+            <div class="kaki-surat tersembunyi" id="kakiSurat">
+              <div class="hati-surat">💜 💗 💜</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HALAMAN 7 — PENUTUP (SEBELUMNYA HALAMAN 8)
+       ============================================================ -->
+  <section id="halaman7" class="halaman" data-nomor="7" aria-label="Halaman penutup">
+
+    <div class="cahaya-latar" aria-hidden="true">
+      <div class="cl cl--1" style="animation-delay:-1s"></div>
+      <div class="cl cl--2" style="animation-delay:-6s"></div>
+      <div class="cl cl--3" style="animation-delay:-12s"></div>
+    </div>
+    <div class="balon-melayang" aria-hidden="true">
+      <span class="balon">🎈</span>
+      <span class="balon" style="--bd:1.5s;--bx:80%">🎈</span>
+      <span class="balon" style="--bd:3s;--bx:20%">💜</span>
+      <span class="balon" style="--bd:2s;--bx:90%">🎈</span>
+    </div>
+    <div class="hati-melayang" aria-hidden="true">
+      <span>💜</span><span>✦</span><span>💗</span><span>✦</span><span>💜</span>
+    </div>
+
+    <div class="konten-halaman">
+      <div class="kartu-kaca animasi-masuk">
+
+        <div class="emoji-kue">🎂</div>
+
+        <p class="teks-sekali-lagi">SEKALI LAGI...</p>
+        <h2 class="judul-penutup">SELAMAT ULANG TAHUN KE-23, CITRA! 🎂🎉</h2>
+
+        <div class="kotak-pesan kotak-pesan--penutup">
+          <p>Semoga kedepannya membawa banyak cerita baik.</p>
+          <p>Semoga Citra selalu bahagia.</p>
+          <p>Dan semoga suatu hari nanti kita bisa komunikasi lagi tanpa harus bingung mulai dari mana.</p>
+          <p>Kalau sekarang belum sempat, nggak apa-apa.</p>
+          <p>dan mohon maaf mas belum bisa ngucapin langsung...</p>
+          <p class="teks-highlight">Ucapannya sederhana gini. 🎀</p>
+          <p>Citra Hebat,sudah bertahan sejauh inii!</p>
+        </div>
+
+        <button class="btn-sekunder" id="tombolUlangi" aria-label="Ulangi kejutan dari awal">
+          ULANGI KEJUTAN 🔄
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
