@@ -611,9 +611,9 @@ const TEKS_HUMOR = [
   'Selamat datang di usia 23, usia ketika niat tidur cepat sering kalah sama pikiran yang tiba-tiba ramai.',
   'Katanya makin dewasa makin bijak. Tapi kadang masih suka berdiam diri sendirian sambil berpikir "Apa sih yang salah dengan dunia ini?" ',
   'Semoga kedepannya rezekinya lancar, hatinya tenang, dan urusannya nggak makin ribet.',
-  '23 tahun sudah berlalu. Semoga kedepannya bukan cuma umur yang bertambah, tapi juga pencapaian dan kebahagiaannya.',
+  '22 tahun sudah berlalu. Semoga kedepannya bukan cuma umur yang bertambah, tapi juga pencapaian dan kebahagiaannya.',
   'Semoga makin cantik, makin bahagia, dan makin sukses.',
-  'Kalau ada yang bikin pusing, ingat: Citra sudah bertahan selama 23 tahun. Pasti bisa hadapi apa pun yang datang 💪',
+  'Kalau ada yang bikin pusing, ingat, Citra sudah bertahan selama 22 tahun lalu. Pasti bisa hadapi apa pun yang datang 💪',
 ];
 
 const daftarHumorEl = document.getElementById('daftarHumor');
@@ -670,7 +670,7 @@ const ISI_SURAT = [
   '',
   'Cuma sebuah ucapan sederhana, dan doa baik yang memang pantas Citra dapatkan.',
   '',
-  'Semoga 23 menjadi tahun pelajaran yang baik buat Citra.',
+  'Semoga 22 tahun lalu menjadi tahun pelajaran yang baik buat Citra.',
   'Semoga semua yang dicari menemukan jalannya.',
   'Semoga Citra selalu punya alasan untuk tersenyum.',
   '',
