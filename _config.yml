@@ -1,0 +1,16 @@
+# GitHub Pages Jekyll Configuration
+theme: null
+plugins: []
+
+# Build settings
+markdown: kramdown
+exclude:
+  - .git
+  - .gitignore
+  - README.md
+
+# GitHub Pages
+title: "Selamat Ulang Tahun Citra! 🎂"
+description: "Website Ulang Tahun Citra ke-23 dengan Musik, Animasi, dan Mode Gelap/Terang"
+url: "https://mynrrfqi.github.io/Website-Ulang-Tahun"
+baseurl: "/Website-Ulang-Tahun"
